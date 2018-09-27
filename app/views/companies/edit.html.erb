@@ -1,0 +1,30 @@
+<h1>Editar Empresa</h1>
+
+<% if @company.errors.any? %>
+  <div class="erros">
+    <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @company, local: true do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :company_name %>
+  </div>
+
+  <div>
+    <%= form.label :active %>
+    <%= form.check_box :active, id: :company_active %>
+  </div>
+  <div>
+    <%= form.submit 'Atualizar' %>
+  </div>
+
+<% end %>
+<div>
+  <%= link_to 'Voltar', companies_path %>
+<div>
